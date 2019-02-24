@@ -6,16 +6,21 @@
 
 Protocol implementations by preference
 
-1. Socket : URL
-2. WebSocket : URL
+1. WebSocket-Consumer : Void
+2. WebSocket-Provider : URL
 
-### Known Interoperability
+A WS Consumer can only connect to a WS Provider, and vice versa. This module implements both roles, 
+and the role is chosen automatically.
 
-|impl\protocol| Socket| WebSocket|
+### Known Implementations of WS-P/C
+
+|impl\provided| WebSocket-Provider | WebSocket-Consumer |
 |---|---|---|
-|**[physical-node](https://www.npmjs.com/package/physical)** | planned | **YES** |
-|**[physical-chrome](https://www.npmjs.com/package/physical)** | no |  **YES** |
+|**[physical-node](https://www.npmjs.com/package/physical)** | yes | yes |
+|**[physical-chrome](https://www.npmjs.com/package/physical)** | no |  yes |
+
+The two-way handshake enables both P-chrome and P-node to successfully initiate a connection.
 
 ## Usage
-
+Normal SYNQ ACK usage.
 [see Physical](https://www.npmjs.com/package/physical) 

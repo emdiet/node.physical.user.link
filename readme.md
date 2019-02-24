@@ -19,7 +19,7 @@ and the role is chosen automatically.
 |**[physical-node](https://www.npmjs.com/package/physical)** | yes | yes |
 |**[physical-chrome](https://www.npmjs.com/package/physical)** | no |  yes |
 
-The two-way handshake enables both P-chrome and P-node to successfully initiate a connection.
+The two-way handshake enables both P-chrome and P-node to successfully initiate a connection with each other.
 
 ## Usage
 Normal SYNQ ACK usage.

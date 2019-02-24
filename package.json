@@ -1,0 +1,42 @@
+{
+  "name": "physical-node",
+  "version": "1.0.0",
+  "description": "virtual physical network infrastructure layer for node",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "prepare": "npm run build && npm run test",
+    "build": "tsc",
+    "test": "npm run build && mocha lib/test --exit"
+  },
+  "keywords": [
+    "physical",
+    "network",
+    "infrastructure",
+    "socket",
+    "p2p",
+    "p2s",
+    "s2p",
+    "s2s",
+    "stream",
+    "node"
+  ],
+  "author": "emdiet",
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/mocha": "^5.2.6",
+    "chai": "^4.2.0",
+    "mocha": "^6.0.1",
+    "ts-node": "^8.0.2",
+    "typescript": "^3.3.3333"
+  },
+  "dependencies": {
+    "@types/node": "^11.9.5",
+    "@types/request": "^2.48.1",
+    "@types/ws": "^6.0.1",
+    "physical": "^3.0.2",
+    "request": "^2.88.0",
+    "ws": "^6.1.4"
+  }
+}

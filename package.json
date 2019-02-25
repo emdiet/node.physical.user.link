@@ -1,6 +1,6 @@
 {
   "name": "physical-node",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "virtual physical network infrastructure layer for node",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",

@@ -1,14 +1,17 @@
 import {expect} from "chai";
 import {PhysicalNode} from "../src/PhysicalNode";
 import {config} from "../config";
+import {Physical} from "physical";
 
 describe("PhysicalNode", ()=>{
-    let physical : PhysicalNode;
+    let physical : Physical, partner : Physical;
     beforeEach(()=>{
         physical = new PhysicalNode();
+        partner = new PhysicalNode();
     });
     afterEach(()=>{
-        //physical.close();
+        physical.close();
+        partner.close();
     });
     it("builds a request", async ()=>{
         let req = await physical.request();
@@ -27,27 +30,23 @@ describe("PhysicalNode", ()=>{
         expect(res.body[0].length).to.be.greaterThan(config.keyLength+7);
     });
     it("responds to a WebSocket-Provider Request", async ()=>{
-        let partner = new PhysicalNode();
         let res = await physical.respond(await partner.request());
         expect(res.author).to.equal("physical-node");
         expect(res.protocol).to.equal("WebSocket-Consumer");
     });
     it("opens on requester side", done =>{
-        let partner = new PhysicalNode();
         physical.setOnOpen(()=>done());
         physical.request()
             .then(r => partner.respond(r))
             .then(r => physical.open(r));
     });
     it("opens on responder side", done =>{
-        let partner = new PhysicalNode();
         partner.setOnOpen(()=>done());
         physical.request()
             .then(r => partner.respond(r))
             .then(r => physical.open(r));
     });
     it("messages go both ways", done =>{
-        let partner = new PhysicalNode();
         physical.request()
             .then(r => partner.respond(r))
             .then(r => physical.open(r));

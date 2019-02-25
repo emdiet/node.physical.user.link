@@ -37,7 +37,15 @@ export class PhysicalNode implements Physical{
         if(this.state != State.CLOSED) this.onClose();
         this.state = State.CLOSED;
         delete PhysicalNode.pendingConnections[this.key];
-        this.socket && this.socket.close();
+        try{
+            this.socket && this.socket.close();
+        }catch (e) {
+            if(e.message === 'WebSocket was closed before the connection was established'){
+                //allowed
+            } else {
+                throw e;
+            }
+        }
     }
 
     open(ack: ACK): void {
